@@ -9,7 +9,7 @@
       rows="10"
     ></textarea>
     <button v-on:click="createList">Create</button>
-    <button>123</button>
+    <button v-on:click="clearList">Clear</button>
   </form>
 </template>
 
@@ -19,15 +19,25 @@ export default {
   data() {
     return {
       list: "",
-      listArray: []
+      listSplit: "",
+      trimmedList: [],
+      test: "1"
     };
   },
   methods: {
     createList() {
-      console.log(this.list.trim());
-
-      // this.listArray.push(this.list.split("\n"));
-      // return this.listArray.push(this.list);
+      this.listSplit = this.list.split("\n");
+      this.trimList(this.trimmedList);
+    },
+    trimList() {
+      for (let i = 0; i < this.listSplit.length; i++) {
+        this.trimmedList[i] = this.listSplit[i].trim();
+      }
+    },
+    clearList() {
+      this.list = "";
+      this.listSplit = "";
+      this.trimmedList = [];
     }
   }
 };
