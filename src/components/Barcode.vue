@@ -1,16 +1,12 @@
 <template>
-  <li>
-    {{ letter }}
-  </li>
+  <li>{{ text }}</li>
 </template>
 
 <script>
 export default {
   name: "Barcode",
-  data() {
-    return {
-      letter: "mybarcode"
-    };
+  props: {
+    text: String
   }
 };
 </script>

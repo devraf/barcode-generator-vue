@@ -1,9 +1,9 @@
 <template>
   <main>
     <h1>hi</h1>
-    <BarcodeForm />
-    <ul>
-      <Barcode />
+    <BarcodeForm v-on:updatedList="makeNewList" />
+    <ul v-for="(item, index) in list" v-bind:key="index">
+      <Barcode v-bind:text="item" />
     </ul>
   </main>
 </template>
@@ -17,6 +17,16 @@ export default {
   components: {
     BarcodeForm,
     Barcode
+  },
+  data() {
+    return {
+      list: []
+    };
+  },
+  methods: {
+    makeNewList(arg) {
+      this.list = arg;
+    }
   }
 };
 </script>

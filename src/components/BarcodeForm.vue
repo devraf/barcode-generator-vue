@@ -8,7 +8,7 @@
       cols="30"
       rows="10"
     ></textarea>
-    <button v-on:click="createList">Create</button>
+    <button v-on:click="updateMainList">Create</button>
     <button v-on:click="clearList">Clear</button>
   </form>
 </template>
@@ -38,6 +38,10 @@ export default {
       this.list = "";
       this.listSplit = "";
       this.trimmedList = [];
+    },
+    updateMainList: function() {
+      this.createList();
+      this.$emit("updatedList", this.trimmedList);
     }
   }
 };
